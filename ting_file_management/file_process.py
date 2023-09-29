@@ -1,5 +1,6 @@
 from ting_file_management.queue import Queue
 from ting_file_management.file_management import txt_importer
+import sys
 
 
 def process(path_file, instance: Queue):
@@ -31,16 +32,9 @@ def remove(instance: Queue):
         print("Não há elementos")
 
 
-def file_metadata(instance, position):
-    """Aqui irá sua implementação"""
-
-
-# TESTE = list()
-# TESTE.append(
-#     [
-#         "Acima de tudo,",
-#         "é fundamental ressaltar que a adoção de políticas
-#             descentralizadoras nos obriga",
-#         "à análise do levantamento das variáveis envolvidas.",
-#     ]
-# )
+def file_metadata(instance: Queue, position):
+    try:
+        data = instance.search(position)
+        print(data)
+    except IndexError:
+        print("Posição inválida", file=sys.stderr)
